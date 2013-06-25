@@ -4,7 +4,6 @@ import interfaces.*;
 import exceptions.*;
 import app.KeyedItem;
 
-//removeItem needs to be modified later11
 public class MyBST<T extends KeyedItem<KT>,KT extends Comparable<? super KT>>
 implements MyBSTInterface<T,KT>{
 	
@@ -102,19 +101,21 @@ implements MyBSTInterface<T,KT>{
 			if(searchKey.compareTo(targetNode.getElement().getKey())<0){
 				//search the left subtree
 				updatedTree = removeItem(targetNode.getLeft(),searchKey);
-				return updatedTree;
+				targetNode.setLeft(updatedTree);
+	
 			}else if(searchKey.compareTo(targetNode.getElement().getKey())==0){
 				//element found!
-				updatedTree = removeNode(targetNode);
+				targetNode = removeNode(targetNode);
 				num--;
-				return updatedTree;
+
 			}else{
 				//(searchKey.compareTo(targetNode.getElement().getKey())>0){
 				//search the right subtree
 				updatedTree = removeItem(targetNode.getRight(),searchKey);
-				return updatedTree;
+				targetNode.setRight(updatedTree);
 			}
-
+			
+			return targetNode;
 		}
 		
 	}//end of remove

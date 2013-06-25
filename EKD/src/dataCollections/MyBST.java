@@ -4,7 +4,7 @@ import interfaces.*;
 import exceptions.*;
 import app.KeyedItem;
 
-//this needs to be modified later
+//removeItem needs to be modified later
 public class MyBST<T extends KeyedItem<KT>,KT extends Comparable<? super KT>>
 implements MyBSTInterface<T,KT>{
 	
